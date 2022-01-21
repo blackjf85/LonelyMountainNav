@@ -27,21 +27,11 @@ class NameFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
+            nextBtn.setOnClickListener{
+
+
             }
-            nextBtn
-                .setOnClickListener {
-                    val firstName = firstNameIl.convertToString()
-                    val lastName = lastNameIl.convertToString()
-
-                    val direction =
-                        NameFragmentDirections.nameToEmailFragmentAction(
-                            firstName,
-                            lastName
-                        )
-                    findNavController().navigate(direction)
-                }
         }
-
     }
 
     override fun onDestroyView() {

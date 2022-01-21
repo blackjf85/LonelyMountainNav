@@ -120,7 +120,7 @@
             app:argType="string" />
 
         <action
-            android:id="@+id/pop_up_sign_up_complete_fragment_to_first_name_fragment"
+            android:id="@+id/display_fragment_to_name_fragment"
             app:popUpTo="@id/name_fragment" />
     </fragment>
 
