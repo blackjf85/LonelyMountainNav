@@ -1,21 +1,20 @@
-package com.example.lonelymountainnav.view
+package com.example.lonelymountainnav.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.lonelymountainnav.adapters.UserAdapter
-import com.example.lonelymountainnav.databinding.FragmentDisplayBinding
+import com.example.lonelymountainnav.databinding.FragmentNameBinding
 import com.example.lonelymountainnav.viewmodel.FormViewModel
 
-class DisplayFragment:Fragment() {
+class NameFragment: Fragment() {
 
-    private var _binding: FragmentDisplayBinding? = null
-    private val binding: FragmentDisplayBinding get() = _binding!!
+    private var _binding: FragmentNameBinding? = null
+    private val binding: FragmentNameBinding get() = _binding!!
     private lateinit var viewModel: FormViewModel
 
     override fun onCreateView(
@@ -23,7 +22,7 @@ class DisplayFragment:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentDisplayBinding.inflate(inflater, container, false)
+        _binding = FragmentNameBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -31,18 +30,24 @@ class DisplayFragment:Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[FormViewModel::class.java]
         with(binding) {
-           viewModel.users.observe(viewLifecycleOwner){ users ->
-               displayRv.apply{
-                   adapter = UserAdapter(users)
-                   layoutManager =
-                       LinearLayoutManager(requireContext())
-               }
-           }
 
-            backBtn.setOnClickListener{
+            var firstName = ""
+            var lastName = ""
+
+            firstNameText.addTextChangedListener {
+                firstName = it.toString()
+            }
+
+            lastNameText.addTextChangedListener {
+                lastName = it.toString()
+            }
+
+            nextBtn.setOnClickListener{
+                viewModel.addFirstName(firstName)
+                viewModel.addLastName(lastName)
 
                 val directions =
-                    DisplayFragmentDirections.actionDisplayFragmentToNameFragment()
+                    NameFragmentDirections.actionNameFragmentToEmailFragment()
                 findNavController().navigate(directions)
             }
         }

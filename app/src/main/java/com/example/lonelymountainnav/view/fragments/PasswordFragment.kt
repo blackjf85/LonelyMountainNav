@@ -1,4 +1,4 @@
-package com.example.lonelymountainnav.view
+package com.example.lonelymountainnav.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,14 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.lonelymountainnav.databinding.FragmentNameBinding
+import com.example.lonelymountainnav.databinding.FragmentPasswordBinding
+import com.example.lonelymountainnav.dataclasses.User
 import com.example.lonelymountainnav.viewmodel.FormViewModel
 
-class NameFragment: Fragment() {
+class PasswordFragment: Fragment() {
 
-    private var _binding: FragmentNameBinding? = null
-    private val binding: FragmentNameBinding get() = _binding!!
+    private var _binding: FragmentPasswordBinding? = null
+    private val binding: FragmentPasswordBinding get() = _binding!!
     private lateinit var viewModel: FormViewModel
 
     override fun onCreateView(
@@ -22,32 +23,35 @@ class NameFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNameBinding.inflate(inflater, container, false)
+        _binding = FragmentPasswordBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[FormViewModel::class.java]
+
         with(binding) {
 
-            var firstName = ""
-            var lastName = ""
+            var password = ""
 
-            firstNameText.addTextChangedListener {
-                firstName = it.toString()
+            passwordText.addTextChangedListener {
+                password = it.toString()
             }
 
-            lastNameText.addTextChangedListener {
-                lastName = it.toString()
-            }
+            submitBtn.setOnClickListener{
+                viewModel.addPassword(password)
 
-            nextBtn.setOnClickListener{
-                viewModel.addFirstName(firstName)
-                viewModel.addLastName(lastName)
+                val user =
+                    User(
+                        "${viewModel.firstName.value.toString()}  ${viewModel.lastName.value.toString()}",
+                        viewModel.email.value.toString(),
+                        viewModel.password.value.toString())
+
+                viewModel.addUser(user)
 
                 val directions =
-                    NameFragmentDirections.actionNameFragmentToEmailFragment()
+                    PasswordFragmentDirections.actionPasswordFragmentToDisplayFragment()
                 findNavController().navigate(directions)
             }
         }

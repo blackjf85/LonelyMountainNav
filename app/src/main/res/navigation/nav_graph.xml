@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/nameFragment"
-        android:name="com.example.lonelymountainnav.view.NameFragment"
+        android:name="com.example.lonelymountainnav.view.fragments.NameFragment"
         android:label="NameFragment" >
         <action
             android:id="@+id/action_nameFragment_to_emailFragment"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/emailFragment"
-        android:name="com.example.lonelymountainnav.view.EmailFragment"
+        android:name="com.example.lonelymountainnav.view.fragments.EmailFragment"
         android:label="EmailFragment" >
         <action
             android:id="@+id/action_emailFragment_to_passwordFragment"
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/passwordFragment"
-        android:name="com.example.lonelymountainnav.view.PasswordFragment"
+        android:name="com.example.lonelymountainnav.view.fragments.PasswordFragment"
         android:label="PasswordFragment" >
         <action
             android:id="@+id/action_passwordFragment_to_displayFragment"
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/displayFragment"
-        android:name="com.example.lonelymountainnav.view.DisplayFragment"
+        android:name="com.example.lonelymountainnav.view.fragments.DisplayFragment"
         android:label="DisplayFragment" >
         <action
             android:id="@+id/action_displayFragment_to_nameFragment"

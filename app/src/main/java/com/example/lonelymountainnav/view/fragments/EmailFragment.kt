@@ -1,4 +1,4 @@
-package com.example.lonelymountainnav.view
+package com.example.lonelymountainnav.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
