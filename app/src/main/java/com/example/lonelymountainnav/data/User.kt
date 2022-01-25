@@ -1,4 +1,4 @@
-package com.example.lonelymountainnav.dataclasses
+package com.example.lonelymountainnav.data
 
 data class User(
     val name: String,

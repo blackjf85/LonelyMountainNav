@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lonelymountainnav.databinding.ItemUserBinding
-import com.example.lonelymountainnav.dataclasses.User
+import com.example.lonelymountainnav.data.User
 
 class UserAdapter(
     private val userList: List<User>

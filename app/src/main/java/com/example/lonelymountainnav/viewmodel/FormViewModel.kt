@@ -3,7 +3,7 @@ package com.example.lonelymountainnav.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.lonelymountainnav.dataclasses.User
+import com.example.lonelymountainnav.data.User
 
 class FormViewModel: ViewModel() {
     private var _firstName: MutableLiveData<String> = MutableLiveData()

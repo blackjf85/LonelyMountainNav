@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.lonelymountainnav.databinding.FragmentNameBinding
 import com.example.lonelymountainnav.viewmodel.FormViewModel
+import java.util.*
 
 class NameFragment: Fragment() {
 
@@ -43,8 +44,16 @@ class NameFragment: Fragment() {
             }
 
             nextBtn.setOnClickListener{
-                viewModel.addFirstName(firstName)
-                viewModel.addLastName(lastName)
+                viewModel.addFirstName(firstName.replaceFirstChar {
+                    if (it.isLowerCase()) it.titlecase(
+                        Locale.getDefault()
+                    ) else it.toString()
+                })
+                viewModel.addLastName(lastName.replaceFirstChar {
+                    if (it.isLowerCase()) it.titlecase(
+                        Locale.getDefault()
+                    ) else it.toString()
+                })
 
                 val directions =
                     NameFragmentDirections.actionNameFragmentToEmailFragment()
