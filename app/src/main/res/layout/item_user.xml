@@ -6,27 +6,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/firstNameTv"
+        android:id="@+id/nameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Jeremy"
+        tools:text="Jeremy Black"
         android:gravity="end"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/emailTv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/lastNameTv"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/lastNameTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Black"
-        android:gravity="start"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/passwordTv"
-        app:layout_constraintStart_toEndOf="@id/firstNameTv"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.google.android.material.textview.MaterialTextView
@@ -35,7 +23,7 @@
         android:layout_height="wrap_content"
         tools:text="my@email.com"
         android:gravity="end"
-        app:layout_constraintTop_toBottomOf="@id/firstNameTv"
+        app:layout_constraintTop_toBottomOf="@id/nameTv"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/passwordTv"/>
@@ -46,7 +34,7 @@
         android:layout_height="wrap_content"
         tools:text="abc123"
         android:gravity="start"
-        app:layout_constraintTop_toBottomOf="@id/lastNameTv"
+        app:layout_constraintTop_toBottomOf="@id/nameTv"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/emailTv"
         app:layout_constraintEnd_toEndOf="parent"/>

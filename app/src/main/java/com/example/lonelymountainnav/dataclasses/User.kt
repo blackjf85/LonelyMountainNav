@@ -1,8 +1,7 @@
 package com.example.lonelymountainnav.dataclasses
 
 data class User(
-    val firstName: String,
-    val lastName: String,
+    val name: String,
     val email: String,
     val password: String
 )

@@ -1,5 +1,6 @@
 package com.example.lonelymountainnav.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -28,12 +29,12 @@ class UserAdapter(
     class UserViewHolder(private val binding: ItemUserBinding):
         RecyclerView.ViewHolder(binding.root){
 
+            @SuppressLint("SetTextI18n")
             fun bind(user: User){
                 with(binding){
-                    firstNameTv.text = user.firstName
-                    lastNameTv.text = user.lastName
-                    emailTv.text = user.email
-                    passwordTv.text = user.password
+                    nameTv.text = "Name: ${user.name}"
+                    emailTv.text = "Email: ${user.email}"
+                    passwordTv.text = "Password: ${user.password}"
                 }
             }
     }
