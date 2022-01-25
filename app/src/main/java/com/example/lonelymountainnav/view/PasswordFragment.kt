@@ -43,10 +43,10 @@ class PasswordFragment: Fragment() {
                 viewModel.addPassword(password)
 
                 val user =
-                    User(viewModel.firstName.toString(),
-                        viewModel.lastName.toString(),
-                        viewModel.email.toString(),
-                        viewModel.password.toString())
+                    User(viewModel.firstName.value.toString(),
+                        viewModel.lastName.value.toString(),
+                        viewModel.email.value.toString(),
+                        viewModel.password.value.toString())
 
                 viewModel.addUser(user)
 
