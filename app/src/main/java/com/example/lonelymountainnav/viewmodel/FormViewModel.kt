@@ -3,49 +3,49 @@ package com.example.lonelymountainnav.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.lonelymountainnav.dataclasses.User
 
 class FormViewModel: ViewModel() {
-    private var _name: MutableLiveData<List<Name>> = MutableLiveData()
-    val name: LiveData<List<Name>> get() = _name
-    private val nameList: MutableList<Name> = mutableListOf()
+    private var _firstName: MutableLiveData<String> = MutableLiveData()
+    val firstName: LiveData<String> get() = _firstName
 
-    private var _email: MutableLiveData<List<Email>> = MutableLiveData()
-    val email: LiveData<List<Email>> get() = _email
-    private val emailList: MutableList<Email> = mutableListOf()
+    private var _lastName: MutableLiveData<String> = MutableLiveData()
+    val lastName: LiveData<String> get() = _lastName
 
-    private var _password: MutableLiveData<List<Password>> = MutableLiveData()
-    val password: LiveData<List<Password>> get() = _password
-    private val passwordList: MutableList<Password> = mutableListOf()
+    private var _email: MutableLiveData<String> = MutableLiveData()
+    val email: LiveData<String> get() = _email
+
+    private var _password: MutableLiveData<String> = MutableLiveData()
+    val password: LiveData<String> get() = _password
+
+    private var _users: MutableLiveData<List<User>> = MutableLiveData()
+    val users: LiveData<List<User>> get() = _users
+    private val userList: MutableList<User> = mutableListOf()
 
 
-    fun addName(name: Name) {
-        nameList.add(name)
+    fun addFirstName(firstName: String) {
 
-        _name.value = nameList
+        _firstName.value = firstName
     }
 
-    fun addEmail(email: Email){
-        emailList.add(email)
+    fun addLastName(lastName: String){
 
-        _email.value = emailList
+        _lastName.value = lastName
     }
 
-    fun addPassword(password: Password){
-        passwordList.add(password)
+    fun addEmail(email: String){
 
-        _password.value = passwordList
+        _email.value = email
+    }
+
+    fun addPassword(password: String){
+
+        _password.value = password
+    }
+
+    fun addUser(user: User) {
+        userList.add(user)
+
+        _users.value = userList
     }
 }
-
-data class Name(
-    val firstName: String,
-    val lastName: String,
-)
-
-data class Email(
-    val email: String,
-)
-
-data class Password(
-    val password: String,
-)

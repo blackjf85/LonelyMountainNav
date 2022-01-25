@@ -4,16 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavArgs
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.example.lonelymountainnav.databinding.FragmentPasswordBinding
+import com.example.lonelymountainnav.dataclasses.User
+import com.example.lonelymountainnav.viewmodel.FormViewModel
 
 class PasswordFragment: Fragment() {
 
     private var _binding: FragmentPasswordBinding? = null
     private val binding: FragmentPasswordBinding get() = _binding!!
+    private lateinit var viewModel: FormViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,9 +29,30 @@ class PasswordFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity())[FormViewModel::class.java]
 
         with(binding) {
-            submitBtn.setOnClickListener {
+
+            var password = ""
+
+            passwordText.addTextChangedListener {
+                password = it.toString()
+            }
+
+            submitBtn.setOnClickListener{
+                viewModel.addPassword(password)
+
+                val user =
+                    User(viewModel.firstName.toString(),
+                        viewModel.lastName.toString(),
+                        viewModel.email.toString(),
+                        viewModel.password.toString())
+
+                viewModel.addUser(user)
+
+                val directions =
+                        PasswordFragmentDirections.actionPasswordFragmentToDisplayFragment()
+                findNavController().navigate(directions)
             }
         }
     }
